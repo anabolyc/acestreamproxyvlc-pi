@@ -144,7 +144,19 @@ class AceConfig(acedefconfig.AceDefConfig):
     # transcodecmd['mp2'] = 'ffmpeg -i - -c:a mp2 -c:v mpeg2video -f mpegts -qscale:v 2 -'.split()
     # transcodecmd['mkv'] = 'ffmpeg -i - -c:a copy -c:v copy -f matroska -'.split()
     # transcodecmd['default'] = 'ffmpeg -i - -c:a copy -c:v copy -f mpegts -'.split()
-    
+    # ----------------------------------------------------
+    # Transcoding configuration for HLS
+    # ----------------------------------------------------
+    # If you use acestream engine ver >= 3.1.5 and vlcuse=True
+    # proxy automaticaly switch to HLS (HTTP Live Streaming) instead of HTTP Progressive Download
+    # You can use this settings for audio transcoding. This option applies only for Live-stream
+    # ---------------------------------------------------
+    # Transcode All audio to AAC
+    transcode_audio = 0
+    # Transcode MP3 (use only when transcode_audio=1)
+    transcode_mp3 = 0
+    # Transcode only AC3 to AAC (use only when transcode_audio=0)
+    transcode_ac3 = 0
     # ----------------------------------------------------
     videodelay = 0
     # Obey PAUSE and RESUME commands from Engine

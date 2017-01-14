@@ -1,7 +1,17 @@
-FROM resin/rpi-raspbian:jessie
-RUN apt-get update -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget  unzip ca-certificates
+FROM armbuild/debian:jessie
+
+# reqired packages
+RUN apt-get update
+RUN apt-get install -y unzip ca-certificates
+# cleanup
+RUN rm -rf /var/lib/apt/lists/*
+
 RUN adduser --disabled-password --gecos "" tv
-RUN cd / && wget https://dl.bintray.com/pipplware/dists/unstable/armv7/misc/acestream_rpi_3.1.5.tar.gz -O acestream_rpi.tar.gz && tar xfv acestream_rpi.tar.gz
+
+COPY acestream_rpi.tar.gz /tmp/acestream_rpi.tar.gz
+RUN tar xfv /tmp/acestream_rpi.tar.gz -C /
+RUN rm /tmp/acestream_rpi.tar.gz
+
 EXPOSE 62062
+
 ENTRYPOINT ["/acestream/start_acestream.sh"]
