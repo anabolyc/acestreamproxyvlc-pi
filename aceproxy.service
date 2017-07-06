@@ -7,8 +7,8 @@ Before=mediacenter.service
 
 [Service]
 ExecStartPre=-/usr/bin/docker rm -f aceproxy-instance
-ExecStartPre=-/usr/bin/docker pull andreymalyshenko/aceproxy:armhf
-ExecStart=/usr/bin/docker run --name aceproxy-instance -p 8000:8000 -p 8081:8081 -v /etc/aceproxy/p2pproxy.py:/aceproxy/plugins/config/p2pproxy.py --link acestream-instance:acehost --link vlc-nox-instance:vlchost andreymalyshenko/aceproxy:armhf
+ExecStartPre=-/usr/bin/docker pull andreymalyshenko/aceproxy:x86_64
+ExecStart=/usr/bin/docker run --name aceproxy-instance -p 8000:8000 -p 8081:8081 -v /etc/aceproxy/p2pproxy.py:/aceproxy/plugins/config/p2pproxy.py --link acestream-instance:acehost --link vlc-nox-instance:vlchost andreymalyshenko/aceproxy:x86_64
 ExecStartPost=/bin/sh -c 'while ! docker ps | grep aceproxy-instance ; do sleep 0.2; done'  
 ExecStop=/usr/bin/docker rm -f aceproxy-instance
 TimeoutSec=0

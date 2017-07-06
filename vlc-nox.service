@@ -5,8 +5,8 @@ After=docker.service
 
 [Service]
 ExecStartPre=-/usr/bin/docker rm -f vlc-nox-instance
-ExecStartPre=-/usr/bin/docker pull andreymalyshenko/vlc-nox:armhf
-ExecStart=/usr/bin/docker run  --name vlc-nox-instance -p 4212:4212 -p 8011:8011 andreymalyshenko/vlc-nox:armhf -I telnet --clock-jitter 0 --network-caching 2000 --sout-mux-caching 2000 --telnet-password admin --telnet-port 4212 --telnet-host 0.0.0.0
+ExecStartPre=-/usr/bin/docker pull andreymalyshenko/vlc-nox:x86_64
+ExecStart=/usr/bin/docker run  --name vlc-nox-instance -p 4212:4212 -p 8011:8011 andreymalyshenko/vlc-nox:x86_64 -I telnet --clock-jitter 0 --network-caching 2000 --sout-mux-caching 2000 --telnet-password admin --telnet-port 4212 --telnet-host 0.0.0.0
 ExecStartPost=/bin/sh -c 'while ! docker ps | grep vlc-nox-instance ; do sleep 0.2; done'
 ExecStop=/usr/bin/docker rm -f vlc-nox-instance
 TimeoutSec=0

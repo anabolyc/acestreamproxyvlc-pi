@@ -6,8 +6,8 @@ After=docker.service
 [Service]
 #Type=simple
 ExecStartPre=-/usr/bin/docker rm -f acestream-instance
-ExecStartPre=-/usr/bin/docker pull andreymalyshenko/acestream:armhf
-ExecStart=/usr/bin/docker run --privileged --rm --name acestream-instance -p 62062:62062 andreymalyshenko/acestream:armhf --client-console --live-buffer 50 --max-connections 400 --max-peers 200
+ExecStartPre=-/usr/bin/docker pull andreymalyshenko/acestream:x86_64
+ExecStart=/usr/bin/docker run --privileged --rm --name acestream-instance -p 62062:62062 andreymalyshenko/acestream:x86_64
 ExecStartPost=/bin/sh -c 'while ! docker ps | grep acestream-instance ; do sleep 0.2; done'   
 ExecStop=/usr/bin/docker rm -f acestream-instance
 TimeoutSec=0

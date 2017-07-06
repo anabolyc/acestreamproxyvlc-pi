@@ -1,9 +1,10 @@
 # Set the base image to use to armhf
-FROM armbuild/debian:jessie
+FROM debian:jessie
 
 # reqired packages
-RUN apt-get update
-RUN apt-get install -y git unzip python-gevent python-pip python-dev gcc && pip install psutil && apt-get remove gcc python-pip python-dev -y
+RUN apt-get update && \
+ apt-get install -y git unzip python-gevent python-pip python-dev gcc && pip install psutil && apt-get remove gcc python-pip python-dev -y && \
+ apt-get clean
 
 RUN cd / && git clone https://github.com/anabolyc/aceproxy.git
 # cleanup 

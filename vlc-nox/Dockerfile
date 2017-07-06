@@ -1,9 +1,11 @@
 # Set the base image to use to armhf
-FROM armbuild/debian:jessie
+FROM debian:jessie
 
 # reqired packages
-RUN apt-get update
-RUN apt-get install vlc-nox -y
+RUN apt-get update && \
+ apt-get install vlc-nox -y && \
+ apt-get clean
+
 # cleanup 
 RUN rm -rf /var/lib/apt/lists/*
 
