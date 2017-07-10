@@ -25,7 +25,7 @@ class AceConfig(acedefconfig.AceDefConfig):
     # Change this if you use remote Ace Stream Engine
     # Remember that by default Ace Stream Engine listens only
     # Local host, so start it with --bind-all parameter
-    acehost = 'acehost'
+    acehost = '127.0.0.1'
     # Ace Stream Engine port (autodetect for Windows)
     aceport = 62062
     # Ace Stream age parameter (LT_13, 13_17, 18_24, 25_34, 35_44, 45_54,
@@ -101,7 +101,7 @@ class AceConfig(acedefconfig.AceDefConfig):
     # Adjust this if you get error 'Cannot spawn VLC!'
     vlcspawntimeout = 30
     # VLC host
-    vlchost = 'vlchost'
+    vlchost = '127.0.0.1'
     # VLC telnet interface port
     vlcport = 4212
     # VLC streaming port (you shouldn't set it in VLC itself)
